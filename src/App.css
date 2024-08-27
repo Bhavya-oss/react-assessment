@@ -1,0 +1,210 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f8fefd;
+  /* width: 100vw; */
+  height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 40px;
+}
+
+.search-bar-container {
+  padding-top: 20vh;
+  width: 40%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 200px;
+}
+
+.input-wrapper {
+  background-color: rgb(105, 225, 225);
+  width: 35%;
+  padding: 0 15px;
+  border-radius: 10px;
+  height: 2.5rem;
+  box-shadow: 0px 0px 8px #ddd;
+  display: flex;
+  align-items: center;
+}
+
+/* input {
+    border: none;
+    background-color: transparent;
+    height: 100%;
+    font-size: 1.25rem;
+    width: 100%;
+    margin-left: 5px;
+  } */
+
+input:focus {
+  outline: none;
+}
+
+#search-icon {
+  color: royalblue;
+  margin-right: 20px;
+}
+
+.results-list {
+  width: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0px 8px #ddd;
+  border-radius: 10px;
+  margin-top: 1rem;
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
+.search-result {
+  padding: 10px 20px;
+}
+
+.search-result:hover {
+  background-color: #efefef;
+}
+
+.widget-card {
+  width: 400px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: rgba(5, 11, 26, 0.1) 0px 4px 30px,
+    rgba(17, 17, 26, 0.05) 0px 8px 32px;
+  padding: 8px;
+  height: 200px;
+  position: relative;
+}
+
+.card-close-icon {
+  position: absolute;
+  top: 3px;
+  right: 6px;
+  font-size: 8px;
+  cursor: pointer;
+}
+
+.widget-align {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 35px;
+  /* align-items: center; */
+}
+
+.widget-button {
+  padding: 8px 16px;
+  border: 1px solid #898282;
+  font-size: 14px;
+  font-weight: 400;
+  background-color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.drawer-title {
+  padding: 8px 16px;
+  background-color: #00308f;
+  color: white;
+  position: relative;
+}
+
+.close-icon {
+  position: absolute;
+  top: 6px;
+  right: 9px;
+  font-size: 22px;
+  color: white;
+  cursor: pointer;
+  font-weight: 200;
+
+  line-height: 24px;
+  border: none;
+  background-color: transparent;
+}
+/* .drawer{
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: "right";
+  } */
+
+/* Tab */
+.tabs {
+  padding: 18px 8px;
+}
+
+.tabs .tab-header {
+  /* height: 40px; */
+  display: flex;
+  align-items: center;
+}
+
+.tabs .tab-header > div {
+  padding-bottom: 10px;
+  width: 100px;
+  text-align: center;
+  cursor: pointer;
+  /* color: #444; */
+  font-size: 14px;
+  font-weight: 400;
+  outline: none;
+  /* margin-bottom: 5px; */
+}
+
+.tabs .tab-header > div.active {
+  color: #c2b6b6;
+}
+
+.tabs .tab-indicator {
+  position: relative;
+  width: 400px;
+  height: 2px;
+  background-color: #c2b6b6;
+  left: 0px;
+  border-radius: 8px;
+  /* margin-top: -2.4px; */
+}
+
+/* .tabs .tab-body {
+    position: relative;
+  }
+  
+  .tabs .tab-body > div {
+    position: absolute;
+    top: -200px;
+    opacity: 0;
+    margin-top: 5px;
+  }
+  
+  .tabs .tab-body > div.active {
+    top: 0px;
+    opacity: 1;
+    margin-top: 0px;
+  } */
+
+.checkbox-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid black;
+  margin-top: 20px;
+  padding: 6px;
+}
+
+.checkbox-wrap input[type="checkbox"] {
+  transform: scale(1.5); /* Increase the scale to 1.5 times the original size */
+}
+
+.combochart-icon {
+  font-size: 75px;
+  color: rgb(238, 233, 233);
+  text-align: center;
+}

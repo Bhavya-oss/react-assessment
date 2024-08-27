@@ -1,0 +1,96 @@
+{
+  "categories": [
+    {
+      "name": "CSPM Executive Dashboard",
+      "id": 1,
+      "widgets": [
+        {
+          "name": "Cloud Accounts",
+          "type": "pie",
+          "data": [
+            { "value": 2, "label": "connected(2)" },
+            { "value": 2, "label": "not-connected(2)" }
+          ]
+        },
+        {
+          "name": "Cloud Account Risk Assessment",
+          "type": "pie",
+          "data": [
+            { "value": 1689, "label": "failed(1689)" },
+            { "value": 681, "label": "warning(1689)" },
+            { "value": 1689, "label": "notAvailable(1689)" },
+            { "value": 7253, "label": "passed(7253)" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CWPP Dashboard",
+      "id": 2,
+      "widgets": [
+        {
+          "name": "Top 5 Namespace Specific Alerts",
+          "type": "graph",
+          "data": null
+        },
+        {
+          "name": "Workload Alerts",
+          "type": "graph",
+          "data": null
+        }
+      ]
+    },
+    {
+      "name": "Registry Scan",
+      "id": 3,
+      "widgets": [
+        {
+          "name": "Image Risk Assessment",
+          "type": "bar",
+
+          "data": [
+            { "value": 1470, "label": "totalVulnerabilities" },
+            { "value": 9, "label": "critical" },
+            { "value": 150, "label": "high" },
+            { "value": 150, "label": "mild" }
+          ]
+        },
+        {
+          "name": "Image Security Issues",
+          "type": "bar",
+          "data": [
+            { "value": 2, "label": "totalImages" },
+            { "value": 2, "label": "critical" },
+            { "value": 2, "label": "high" },
+            { "value": 150, "label": "mild" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ticket",
+      "id": 4,
+      "widgets": [
+        {
+          "name": "Cloud Accounts",
+          "type": "pie",
+          "data": [
+            { "value": 2, "label": "total(2)" },
+            { "value": 2, "label": "connected(2)" },
+            { "value": 0, "label": "notConnected(0)" }
+          ]
+        },
+        {
+          "name": "Cloud Account Risk Assessment",
+          "type": "pie",
+          "data": [
+            { "value": 2, "label": "failed(2)" },
+            { "value": 2, "label": "warning(2)" },
+            { "value": 8, "label": "notConnected(8)" },
+            { "value": 72, "label": "passed(72)" }
+          ]
+        }
+      ]
+    }
+  ]
+}
