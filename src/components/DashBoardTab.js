@@ -68,6 +68,14 @@ function DashboardTab({
                     />
                   }
                   label={widget.name}
+                  sx={{
+                    "& .MuiFormControlLabel-label": {
+                      fontFamily: "Poppins",
+                      fontSize: "14px",
+                      fontWeight: 300,
+                      color: "#47506bff",
+                    },
+                  }}
                 />
               </div>
             ))}

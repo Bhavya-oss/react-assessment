@@ -20,8 +20,8 @@
           "data": [
             { "value": 168, "label": "failed (168)" },
             { "value": 681, "label": "warning (681)" },
-            { "value": 169, "label": "notAvailable (169)" },
-            { "value": 253, "label": "passed (253)" }
+            { "value": 869, "label": "notAvailable (869)" },
+            { "value": 282, "label": "passed (282)" }
           ]
         },
         {
@@ -29,8 +29,8 @@
           "name": "Cloud Management",
           "type": "pie",
           "data": [
-            { "value": 900, "label": "active (900)" },
-            { "value": 100, "label": "inactive (100)" }
+            { "value": 1500, "label": "active (1500)" },
+            { "value": 1500, "label": "inactive (1500)" }
           ]
         },
         {
@@ -41,7 +41,7 @@
             { "value": 189, "label": "critical (189)" },
             { "value": 681, "label": "alert (681)" },
             { "value": 168, "label": "unavailable (168)" },
-            { "value": 753, "label": "success (753)" }
+            { "value": 962, "label": "success (962)" }
           ]
         }
       ]

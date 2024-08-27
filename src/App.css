@@ -126,6 +126,21 @@ input:focus {
   cursor: pointer;
   color: #7b8694ff;
 }
+.personalize-dashboard {
+  color: #545454ff;
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 6px;
+  margin-left: 6px;
+}
+
+.drawer-button {
+  border: 1px solid #14147dff;
+  border-radius: 6px;
+  padding: 6px 18px;
+  display: inline-block;
+  cursor: pointer;
+}
 
 .widget-button {
   padding: 8px 16px;
@@ -136,6 +151,22 @@ input:focus {
   border-radius: 6px;
   cursor: pointer;
   color: #7b8694ff;
+}
+
+.cancel-text {
+  color: #14147dff;
+}
+
+.confirm-text {
+  color: white;
+}
+
+.background-color {
+  background-color: #14147dff;
+}
+
+.background-cancel {
+  background-color: white;
 }
 
 .drawer-title {
@@ -241,7 +272,7 @@ input:focus {
   gap: 8px;
   border: 1px solid black;
   margin-top: 20px;
-  padding: 6px;
+  padding: 0px 6px;
 }
 
 .checkbox-wrap input[type="checkbox"] {
