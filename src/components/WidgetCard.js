@@ -26,8 +26,18 @@ function WidgetCard({ widget, category, onDelete }) {
   return (
     <div className="widget-card">
       <CloseIcon className="card-close-icon" onClick={handleDeleteCard} />
-      <div>{widget.name}</div>
-      <div>{widget.data ? renderWidget(widget) : <EmptyDataChart />}</div>
+      <p className="card-title">{widget.name}</p>
+
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          height: "100%",
+        }}
+      >
+        {widget.data ? renderWidget(widget) : <EmptyDataChart />}
+      </div>
     </div>
   );
 }

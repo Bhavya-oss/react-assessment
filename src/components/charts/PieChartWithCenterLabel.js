@@ -42,7 +42,7 @@ function PieChartWithCenterLabel({ data }) {
             data,
             innerRadius: 40,
             cx: 66,
-            cy: 60,
+            cy: 59,
             colorField: "color",
           },
         ]}

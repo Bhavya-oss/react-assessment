@@ -18,16 +18,26 @@ const DashBoardBarChart = ({ data }) => {
   ];
 
   return (
-    <BarChart width={400} height={40} data={barData} layout="vertical">
-      <CartesianGrid strokeDasharray="4 4" strokeOpacity={0} />
-      <XAxis type="number" hide /> {/* Hide X-axis */}
-      <YAxis type="category" dataKey="name" hide /> {/* Hide Y-axis */}
-      <Legend />
-      <Bar dataKey="Critical" stackId="a" fill="#ff8042" />
-      <Bar dataKey="High" stackId="a" fill="#ffbb28" />
-      <Bar dataKey="Total" stackId="a" fill="#82ca9d" />
-      <Bar dataKey="Mild" stackId="a" fill="#ff8042" />
-    </BarChart>
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "100%",
+      }}
+    >
+      {" "}
+      <BarChart width={400} height={40} data={barData} layout="vertical">
+        <CartesianGrid strokeDasharray="4 4" strokeOpacity={0} />
+        <XAxis type="number" hide />
+        <YAxis type="category" dataKey="name" hide />
+        <Legend />
+        <Bar dataKey="Critical" stackId="a" fill="#ff8042" />
+        <Bar dataKey="High" stackId="a" fill="#ffbb28" />
+        <Bar dataKey="Total" stackId="a" fill="#82ca9d" />
+        <Bar dataKey="Mild" stackId="a" fill="#ff8042" />
+      </BarChart>
+    </div>
   );
 };
 

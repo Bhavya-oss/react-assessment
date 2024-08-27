@@ -5,21 +5,43 @@
       "id": 1,
       "widgets": [
         {
+          "id": 1,
           "name": "Cloud Accounts",
           "type": "pie",
           "data": [
-            { "value": 2, "label": "connected(2)" },
-            { "value": 2, "label": "not-connected(2)" }
+            { "value": 500, "label": "connected (500)" },
+            { "value": 500, "label": "not-connected (500)" }
           ]
         },
         {
+          "id": 2,
           "name": "Cloud Account Risk Assessment",
           "type": "pie",
           "data": [
-            { "value": 1689, "label": "failed(1689)" },
-            { "value": 681, "label": "warning(1689)" },
-            { "value": 1689, "label": "notAvailable(1689)" },
-            { "value": 7253, "label": "passed(7253)" }
+            { "value": 168, "label": "failed (168)" },
+            { "value": 681, "label": "warning (681)" },
+            { "value": 169, "label": "notAvailable (169)" },
+            { "value": 253, "label": "passed (253)" }
+          ]
+        },
+        {
+          "id": 3,
+          "name": "Cloud Management",
+          "type": "pie",
+          "data": [
+            { "value": 900, "label": "active (900)" },
+            { "value": 100, "label": "inactive (100)" }
+          ]
+        },
+        {
+          "id": 4,
+          "name": "Cloud Architect",
+          "type": "pie",
+          "data": [
+            { "value": 189, "label": "critical (189)" },
+            { "value": 681, "label": "alert (681)" },
+            { "value": 168, "label": "unavailable (168)" },
+            { "value": 753, "label": "success (753)" }
           ]
         }
       ]
@@ -29,12 +51,26 @@
       "id": 2,
       "widgets": [
         {
-          "name": "Top 5 Namespace Specific Alerts",
+          "id": 1,
+          "name": "Salary",
           "type": "graph",
           "data": null
         },
         {
-          "name": "Workload Alerts",
+          "id": 2,
+          "name": "Work Load",
+          "type": "graph",
+          "data": null
+        },
+        {
+          "id": 3,
+          "name": "Accomudation",
+          "type": "graph",
+          "data": null
+        },
+        {
+          "id": 4,
+          "name": "Other Benifits",
           "type": "graph",
           "data": null
         }
@@ -45,18 +81,43 @@
       "id": 3,
       "widgets": [
         {
+          "id": 1,
           "name": "Image Risk Assessment",
           "type": "bar",
 
           "data": [
-            { "value": 1470, "label": "totalVulnerabilities" },
-            { "value": 9, "label": "critical" },
-            { "value": 150, "label": "high" },
+            { "label": "critical", "value": 150 },
+            { "label": "high", "value": 80 },
+            { "label": "totalImages", "value": 200 },
+            { "label": "mild", "value": 50 }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "Image Security Issues",
+          "type": "bar",
+          "data": [
+            { "value": 2, "label": "totalImages" },
+            { "value": 2, "label": "critical" },
+            { "value": 2, "label": "high" },
             { "value": 150, "label": "mild" }
           ]
         },
         {
-          "name": "Image Security Issues",
+          "id": 3,
+          "name": "Image Store",
+          "type": "bar",
+
+          "data": [
+            { "label": "critical", "value": 150 },
+            { "label": "high", "value": 80 },
+            { "label": "totalImages", "value": 200 },
+            { "label": "mild", "value": 50 }
+          ]
+        },
+        {
+          "id": 4,
+          "name": "Image Optimize",
           "type": "bar",
           "data": [
             { "value": 2, "label": "totalImages" },
@@ -72,22 +133,45 @@
       "id": 4,
       "widgets": [
         {
-          "name": "Cloud Accounts",
+          "id": 1,
+          "name": "Ticket Booking",
           "type": "pie",
           "data": [
-            { "value": 2, "label": "total(2)" },
-            { "value": 2, "label": "connected(2)" },
-            { "value": 0, "label": "notConnected(0)" }
+            { "value": 2, "label": "total" },
+            { "value": 2, "label": "connected" },
+            { "value": 0, "label": "notConnected" }
           ]
         },
         {
-          "name": "Cloud Account Risk Assessment",
+          "id": 2,
+          "name": "Ticket Canceling",
           "type": "pie",
           "data": [
-            { "value": 2, "label": "failed(2)" },
-            { "value": 2, "label": "warning(2)" },
-            { "value": 8, "label": "notConnected(8)" },
-            { "value": 72, "label": "passed(72)" }
+            { "value": 2, "label": "failed" },
+            { "value": 2, "label": "warning " },
+            { "value": 8, "label": "notConnected" },
+            { "value": 72, "label": "passed" }
+          ]
+        },
+        {
+          "id": 3,
+          "name": "Ticket Resevation",
+          "type": "pie",
+          "data": [
+            { "value": 2, "label": "total" },
+            { "value": 2, "label": "connected" },
+            { "value": 0, "label": "notConnected " }
+          ]
+        },
+        {
+          "id": 4,
+          "name": "Ticket Handling",
+          "type": "pie",
+          "data": [
+            { "value": 2, "label": "failed " },
+            { "value": 2, "label": "warning " },
+            { "value": 8, "label": "notConnected " },
+            { "value": 72, "label": "passed " }
           ]
         }
       ]
