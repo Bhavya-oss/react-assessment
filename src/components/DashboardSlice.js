@@ -1,58 +1,147 @@
-// import { createSlice } from "@reduxjs/toolkit";
-// import WIDGETDATA from "../assets/data.json";
+// export const SET_DATA = "SET_DATA";
+// export const OPEN_DRAWER = "OPEN_DRAWER";
+// export const CLOSE_DRAWER = "CLOSE_DRAWER";
+// export const DELETE_WIDGET = "DELETE_WIDGET";
+// export const ADD_WIDGET = "ADD_WIDGET";
+// export const UPDATE_SEARCH_TERM = "UPDATE_SEARCH_TERM";
+// export const TOGGLE_WIDGET = "TOGGLE_WIDGET";
 
-// const initialState = {
-//   data: WIDGETDATA,
-//   searchTerm: "",
-//   selectedCategoryIndex: 0,
-// };
-
-// const dashboardSlice = createSlice({
-//   name: "dashboard",
-//   initialState,
-//   reducers: {
-//     toggleDrawer(state) {
-//       state.isDrawerOpen = !state.isDrawerOpen;
-//     },
-//     setSearchTerm: (state, action) => {
-//       state.searchTerm = action.payload;
-//     },
-//     setSelectedCategoryIndex: (state, action) => {
-//       state.selectedCategoryIndex = action.payload;
-//     },
-//     toggleWidgetShow: (state, action) => {
-//       const { categoryName, widgetName } = action.payload;
-//       const category = state.data.categories.find(
-//         (cat) => cat.name === categoryName
-//       );
-//       const widget = category.widgets.find((w) => w.name === widgetName);
-//       widget.show = !widget.show;
-//     },
-//     setFilteredWidgets: (state, action) => {
-//       const searchTerm = action.payload.toLowerCase();
-//       state.data.categories = WIDGETDATA.categories
-//         .map((category) => ({
-//           ...category,
-//           widgets: category.widgets.filter((widget) =>
-//             widget.name.toLowerCase().includes(searchTerm)
-//           ),
-//         }))
-//         .filter((category) => category.widgets.length > 0);
-//     },
-//     updateData: (state, action) => {
-//       state.data = action.payload;
-//     },
-//   },
+// // Set data for widgets
+// export const setData = (data) => ({
+//   type: SET_DATA,
+//   payload: data,
 // });
 
-// export const {
-//   toggleDrawer,
+// // Open drawer
+// export const openDrawer = (index) => ({
+//   type: OPEN_DRAWER,
+//   payload: index,
+// });
 
-//   setSearchTerm,
-//   setSelectedCategoryIndex,
-//   toggleWidgetShow,
-//   setFilteredWidgets,
-//   updateData,
-// } = dashboardSlice.actions;
+// // Close drawer
+// export const closeDrawer = () => ({
+//   type: CLOSE_DRAWER,
+// });
 
-// export default dashboardSlice.reducer;
+// // Delete widget
+// export const deleteWidget = (categoryName, widgetName) => ({
+//   type: DELETE_WIDGET,
+//   payload: { categoryName, widgetName },
+// });
+
+// // Add widget
+// export const addWidget = (categoryName, widget) => ({
+//   type: ADD_WIDGET,
+//   payload: { categoryName, widget },
+// });
+
+// // Update search term
+// export const updateSearchTerm = (searchTerm) => ({
+//   type: UPDATE_SEARCH_TERM,
+//   payload: searchTerm,
+// });
+
+// // Toggle widget visibility
+// export const toggleWidget = (categoryName, widgetName, isVisible) => ({
+//   type: TOGGLE_WIDGET,
+//   payload: { categoryName, widgetName, isVisible },
+// });
+
+// const initialState = {
+//     data: {},
+//     isDrawerOpen: false,
+//     selectedCategoryIndex: 0,
+//     searchTerm: "",
+//   };
+
+//   const dashboardReducer = (state = initialState, action) => {
+//     switch (action.type) {
+//       case SET_DATA:
+//         return {
+//           ...state,
+//           data: action.payload,
+//         };
+
+//       case OPEN_DRAWER:
+//         return {
+//           ...state,
+//           isDrawerOpen: true,
+//           selectedCategoryIndex: action.payload,
+//         };
+
+//       case CLOSE_DRAWER:
+//         return {
+//           ...state,
+//           isDrawerOpen: false,
+//         };
+
+//       case DELETE_WIDGET:
+//         const { categoryName, widgetName } = action.payload;
+//         return {
+//           ...state,
+//           data: {
+//             ...state.data,
+//             categories: state.data.categories.map((category) => {
+//               if (category.name === categoryName) {
+//                 return {
+//                   ...category,
+//                   widgets: category.widgets.map((widget) =>
+//                     widget.name === widgetName ? { ...widget, show: false } : widget
+//                   ),
+//                 };
+//               }
+//               return category;
+//             }),
+//           },
+//         };
+
+//       case ADD_WIDGET:
+//         const { categoryName: addCategoryName, widget } = action.payload;
+//         return {
+//           ...state,
+//           data: {
+//             ...state.data,
+//             categories: state.data.categories.map((category) => {
+//               if (category.name === addCategoryName) {
+//                 return {
+//                   ...category,
+//                   widgets: [...category.widgets, widget],
+//                 };
+//               }
+//               return category;
+//             }),
+//           },
+//         };
+
+//       case UPDATE_SEARCH_TERM:
+//         return {
+//           ...state,
+//           searchTerm: action.payload,
+//         };
+
+//       case TOGGLE_WIDGET:
+//         const { categoryName: toggleCategoryName, widgetName: toggleWidgetName, isVisible } = action.payload;
+//         return {
+//           ...state,
+//           data: {
+//             ...state.data,
+//             categories: state.data.categories.map((category) => {
+//               if (category.name === toggleCategoryName) {
+//                 return {
+//                   ...category,
+//                   widgets: category.widgets.map((widget) =>
+//                     widget.name === toggleWidgetName ? { ...widget, show: isVisible } : widget
+//                   ),
+//                 };
+//               }
+//               return category;
+//             }),
+//           },
+//         };
+
+//       default:
+//         return state;
+//     }
+//   };
+
+//   export default dashboardReducer;
