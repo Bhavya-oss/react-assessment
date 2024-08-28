@@ -8,6 +8,7 @@
           "id": 1,
           "name": "Cloud Accounts",
           "type": "pie",
+          "show": true,
           "data": [
             { "value": 500, "label": "connected (500)" },
             { "value": 500, "label": "not-connected (500)" }
@@ -17,6 +18,7 @@
           "id": 2,
           "name": "Cloud Account Risk Assessment",
           "type": "pie",
+          "show": true,
           "data": [
             { "value": 168, "label": "failed (168)" },
             { "value": 681, "label": "warning (681)" },
@@ -28,6 +30,7 @@
           "id": 3,
           "name": "Cloud Management",
           "type": "pie",
+          "show": false,
           "data": [
             { "value": 1500, "label": "active (1500)" },
             { "value": 1500, "label": "inactive (1500)" }
@@ -37,6 +40,7 @@
           "id": 4,
           "name": "Cloud Architect",
           "type": "pie",
+          "show": false,
           "data": [
             { "value": 189, "label": "critical (189)" },
             { "value": 681, "label": "alert (681)" },
@@ -54,24 +58,28 @@
           "id": 1,
           "name": "Salary",
           "type": "graph",
+          "show": true,
           "data": null
         },
         {
           "id": 2,
           "name": "Work Load",
           "type": "graph",
+          "show": true,
           "data": null
         },
         {
           "id": 3,
-          "name": "Accomudation",
+          "name": "Accomodation",
           "type": "graph",
+          "show": false,
           "data": null
         },
         {
           "id": 4,
           "name": "Other Benifits",
           "type": "graph",
+          "show": false,
           "data": null
         }
       ]
@@ -84,7 +92,7 @@
           "id": 1,
           "name": "Image Risk Assessment",
           "type": "bar",
-
+          "show": true,
           "data": [
             { "label": "critical", "value": 150 },
             { "label": "high", "value": 80 },
@@ -96,6 +104,7 @@
           "id": 2,
           "name": "Image Security Issues",
           "type": "bar",
+          "show": true,
           "data": [
             { "value": 2, "label": "totalImages" },
             { "value": 2, "label": "critical" },
@@ -107,7 +116,7 @@
           "id": 3,
           "name": "Image Store",
           "type": "bar",
-
+          "show": false,
           "data": [
             { "label": "critical", "value": 150 },
             { "label": "high", "value": 80 },
@@ -119,6 +128,7 @@
           "id": 4,
           "name": "Image Optimize",
           "type": "bar",
+          "show": false,
           "data": [
             { "value": 2, "label": "totalImages" },
             { "value": 2, "label": "critical" },
@@ -136,6 +146,7 @@
           "id": 1,
           "name": "Ticket Booking",
           "type": "pie",
+          "show": true,
           "data": [
             { "value": 2, "label": "total" },
             { "value": 2, "label": "connected" },
@@ -146,9 +157,10 @@
           "id": 2,
           "name": "Ticket Canceling",
           "type": "pie",
+          "show": true,
           "data": [
             { "value": 2, "label": "failed" },
-            { "value": 2, "label": "warning " },
+            { "value": 2, "label": "warning" },
             { "value": 8, "label": "notConnected" },
             { "value": 72, "label": "passed" }
           ]
@@ -157,21 +169,23 @@
           "id": 3,
           "name": "Ticket Resevation",
           "type": "pie",
+          "show": false,
           "data": [
             { "value": 2, "label": "total" },
             { "value": 2, "label": "connected" },
-            { "value": 0, "label": "notConnected " }
+            { "value": 0, "label": "notConnected" }
           ]
         },
         {
           "id": 4,
           "name": "Ticket Handling",
           "type": "pie",
+          "show": false,
           "data": [
-            { "value": 2, "label": "failed " },
-            { "value": 2, "label": "warning " },
-            { "value": 8, "label": "notConnected " },
-            { "value": 72, "label": "passed " }
+            { "value": 2, "label": "failed" },
+            { "value": 2, "label": "warning" },
+            { "value": 8, "label": "notConnected" },
+            { "value": 72, "label": "passed" }
           ]
         }
       ]

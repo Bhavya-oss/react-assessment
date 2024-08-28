@@ -1,129 +1,76 @@
-import React, { useState, useMemo } from "react";
-import WIDGETDATA from "../assets/data.json";
-import DashboardDrawer from "./DashboardDrawer";
+import React, { useMemo } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  setSearchTerm,
+  setSelectedCategoryIndex,
+  toggleWidgetShow,
+  setFilteredWidgets,
+} from "../components/DashboardSlice";
 import WidgetCard from "./WidgetCard";
-import { TextField, Autocomplete } from "@mui/material";
 import CachedOutlinedIcon from "@mui/icons-material/CachedOutlined";
 import MoreVertSharpIcon from "@mui/icons-material/MoreVertSharp";
 import AccessTimeFilledSharpIcon from "@mui/icons-material/AccessTimeFilledSharp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import Divider from "@mui/joy/Divider";
 import Header from "./Header";
+import DashboardDrawer from "./DashboardDrawer";
+import { toggleDrawer } from "../components/DashboardSlice";
 
 function DashboardWidget() {
-  const [open, setOpen] = useState(false);
-  const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
-  const [selectedWidgets, setSelectedWidgets] = useState({});
-  const [searchTerm, setSearchTerm] = useState("");
-  const [data, setData] = useState(WIDGETDATA);
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.dashboard.data);
+  const searchTerm = useSelector((state) => state.dashboard.searchTerm);
+  const selectedCategoryIndex = useSelector(
+    (state) => state.dashboard.selectedCategoryIndex
+  );
+  const isDrawerOpen = useSelector((state) => state.dashboard.isDrawerOpen);
 
   const handleOpenDrawer = (index) => {
-    setSelectedCategoryIndex(index);
-    setOpen(true);
-  };
-
-  const handleCloseDrawer = () => {
-    setOpen(false);
-  };
-
-  const handleWidgetSelection = (categoryName, widget, isSelected) => {
-    setSelectedWidgets((prevSelectedWidgets) => {
-      const categoryWidgets = prevSelectedWidgets[categoryName] || [];
-
-      if (isSelected) {
-        return {
-          ...prevSelectedWidgets,
-          [categoryName]: [...categoryWidgets, widget],
-        };
-      } else {
-        return {
-          ...prevSelectedWidgets,
-          [categoryName]: categoryWidgets.filter((w) => w.name !== widget.name),
-        };
-      }
-    });
+    dispatch(setSelectedCategoryIndex(index));
   };
 
   const handleDeleteWidget = (categoryName, widgetName) => {
-    setSelectedWidgets((prevSelectedWidgets) => {
-      const updatedCategoryWidgets = prevSelectedWidgets[categoryName].filter(
-        (widget) => widget.name !== widgetName
-      );
-
-      return {
-        ...prevSelectedWidgets,
-        [categoryName]: updatedCategoryWidgets,
-      };
-    });
+    dispatch(toggleWidgetShow({ categoryName, widgetName }));
   };
 
-  // Collect all widget names for Autocomplete
-  const allWidgetNames = useMemo(() => {
-    return WIDGETDATA.categories.flatMap((category) =>
-      category.widgets.map((widget) => widget.name)
-    );
-  }, []);
-
-  // Filter widgets based on search term
   const filteredWidgets = useMemo(() => {
-    if (!searchTerm) return selectedWidgets;
-
-    const filtered = {};
-    for (const category in selectedWidgets) {
-      filtered[category] = selectedWidgets[category].filter((widget) =>
-        widget.name.toLowerCase().includes(searchTerm.toLowerCase())
-      );
+    if (!searchTerm) {
+      return data.categories
+        .flatMap((c) => c.widgets)
+        .filter((widget) => widget.show);
     }
 
-    return filtered;
-  }, [searchTerm, selectedWidgets]);
+    return data.categories
+      .flatMap((c) => c.widgets)
+      .filter(
+        (widget) =>
+          widget.show &&
+          widget.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+  }, [searchTerm, data]);
 
   const handleSearchChange = (event) => {
-    setSearchTerm(event.target.value);
+    dispatch(setSearchTerm(event.target.value));
+    dispatch(setFilteredWidgets(event.target.value));
+  };
 
-    // Filter categories based on the widget names
-    setData((prev) => ({
-      ...prev,
-      categories: WIDGETDATA?.categories
-        ?.map((category) => {
-          // Filter widgets within each category
-          const filteredWidgets = category.widgets?.filter((widget) =>
-            widget.name
-              ?.toLowerCase()
-              ?.includes(event.target.value?.toLowerCase())
-          );
-
-          // Return the category with the filtered widgets
-          return {
-            ...category,
-            widgets: filteredWidgets,
-          };
-        })
-        .filter((category) => category.widgets.length > 0), // Only include categories that have widgets matching the search term
-    }));
+  const handleCloseDrawer = () => {
+    dispatch(toggleDrawer());
   };
 
   return (
     <div>
-      {/* <TextField
-        label="Your Label"
-        variant="outlined"
-        value={searchTerm}
-        onChange={handleSearchChange}
-      /> */}
-
       <Header searchTerm={searchTerm} handleSearchChange={handleSearchChange} />
-
       <div className="main">
         <div
           style={{
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
+            width: "97%",
           }}
         >
-          {" "}
-          <h3 style={{ marginBottom: "21px" }}>DNAPP Dashboard</h3>{" "}
+          <h3 style={{ marginBottom: "21px" }}>DNAPP Dashboard</h3>
           <div
             style={{
               display: "flex",
@@ -135,7 +82,7 @@ function DashboardWidget() {
             <button className="menu-button">
               {" "}
               Add Widget&nbsp;&nbsp;&nbsp;+
-            </button>{" "}
+            </button>
             <CachedOutlinedIcon
               style={{
                 fontSize: "35px",
@@ -147,7 +94,6 @@ function DashboardWidget() {
                 cursor: "pointer",
                 color: "#7b8694ff",
               }}
-              //   className="menu-icon"
             />
             <MoreVertSharpIcon
               style={{
@@ -175,27 +121,26 @@ function DashboardWidget() {
             >
               <AccessTimeFilledSharpIcon style={{ color: "#7676b0ff" }} />
               <Divider orientation="vertical" variant="middle" flexItem />
-              <p style={{ fontSize: "12px" }}>Last 2 days </p>
+              <p style={{ fontSize: "12px" }}>Last 2 days</p>
               <KeyboardArrowDownIcon />
             </div>
           </div>
         </div>
         <div>
-          {" "}
           {data?.categories.map((cate, index) => (
-            <div className="mb-22" key={cate.id}>
+            <div key={cate.id} className="mb-22">
               <h4 className="mb-6">{cate.name}</h4>
-              <div className="widget-align ">
-                {(filteredWidgets[cate.name] || cate.widgets).map(
-                  (widget, idx) => (
+              <div className="widget-align">
+                {(filteredWidgets?.[cate.name] || cate?.widgets)
+                  .filter((widget) => widget.show)
+                  .map((widget, idx) => (
                     <WidgetCard
                       key={idx}
                       widget={widget}
                       category={cate}
                       onDelete={handleDeleteWidget}
                     />
-                  )
-                )}
+                  ))}
                 <div
                   className="widget-card"
                   style={{
@@ -216,13 +161,7 @@ function DashboardWidget() {
           ))}
         </div>
       </div>
-      <DashboardDrawer
-        isOpen={open}
-        onClose={handleCloseDrawer}
-        selectedCategoryIndex={selectedCategoryIndex}
-        onWidgetSelection={handleWidgetSelection}
-        selectedWidgets={selectedWidgets}
-      />
+      <DashboardDrawer isOpen={isDrawerOpen} onClose={handleCloseDrawer} />{" "}
     </div>
   );
 }

@@ -1,89 +1,41 @@
-import React, { useState, useEffect } from "react";
-import { Box, Tabs, Tab, Checkbox, FormControlLabel } from "@mui/material";
-import dashBoardData from "../assets/data.json";
+import React from "react";
+import { useDispatch } from "react-redux";
 
-function DashboardTab({
+function DashBoardTab({
+  categories,
   selectedCategoryIndex,
-  onWidgetSelection,
-  selectedWidgets,
+  localSelectedWidgets,
+  onWidgetSelect,
 }) {
-  const [activeTab, setActiveTab] = useState(selectedCategoryIndex);
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    setActiveTab(selectedCategoryIndex);
-  }, [selectedCategoryIndex]);
-
-  const handleTabChange = (event, newValue) => {
-    setActiveTab(newValue);
-  };
-
-  const handleCheckboxChange = (category, widget, event) => {
-    onWidgetSelection(category.name, widget, event.target.checked);
+  const handleCategoryClick = (index) => {
+    dispatch(setSelectedCategoryIndex(index));
   };
 
   return (
-    <>
-      <Box sx={{ width: "74%", p: "8px" }}>
-        <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-          <Tabs
-            value={activeTab}
-            onChange={handleTabChange}
-            indicatorColor="primary"
-            textColor="primary"
-            variant="fullWidth"
-            aria-label="dashboard tabs"
-          >
-            {dashBoardData.categories.map((category, index) => (
-              <Tab
-                key={index}
-                label={category.name.split(" ")[0]}
-                sx={{
-                  fontWeight: activeTab === index ? "bold" : "normal",
-                  textTransform: "none",
-                }}
+    <div>
+      {categories.map((category, index) => (
+        <div key={category.id} onClick={() => handleCategoryClick(index)}>
+          <h4>{category.name}</h4>
+          {category.widgets.map((widget) => (
+            <div key={widget.id}>
+              <input
+                type="checkbox"
+                checked={localSelectedWidgets[category.name]?.includes(
+                  widget.name
+                )}
+                onChange={(e) =>
+                  onWidgetSelect(category.name, widget, e.target.checked)
+                }
               />
-            ))}
-          </Tabs>
-        </Box>
-      </Box>
-
-      <Box sx={{ padding: 2 }}>
-        {dashBoardData.categories.map((category, index) => (
-          <Box
-            key={index}
-            sx={{ display: activeTab === index ? "block" : "none" }}
-          >
-            {category.widgets.map((widget, idx) => (
-              <div className="checkbox-wrap" key={idx}>
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={(selectedWidgets[category.name] || []).some(
-                        (w) => w.name === widget.name
-                      )}
-                      onChange={(event) =>
-                        handleCheckboxChange(category, widget, event)
-                      }
-                      value={widget.name}
-                    />
-                  }
-                  label={widget.name}
-                  sx={{
-                    "& .MuiFormControlLabel-label": {
-                      fontFamily: "Poppins",
-                      fontSize: "14px",
-                      fontWeight: 300,
-                      color: "#47506bff",
-                    },
-                  }}
-                />
-              </div>
-            ))}
-          </Box>
-        ))}
-      </Box>
-    </>
+              <label>{widget.name}</label>
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
   );
 }
 
-export default DashboardTab;
+export default DashBoardTab;
