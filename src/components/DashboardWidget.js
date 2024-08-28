@@ -8,6 +8,7 @@ import MoreVertSharpIcon from "@mui/icons-material/MoreVertSharp";
 import AccessTimeFilledSharpIcon from "@mui/icons-material/AccessTimeFilledSharp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import Divider from "@mui/joy/Divider";
+import Header from "./Header";
 
 function DashboardWidget() {
   const [open, setOpen] = useState(false);
@@ -104,12 +105,14 @@ function DashboardWidget() {
 
   return (
     <div>
-      <TextField
+      {/* <TextField
         label="Your Label"
         variant="outlined"
         value={searchTerm}
         onChange={handleSearchChange}
-      />
+      /> */}
+
+      <Header searchTerm={searchTerm} handleSearchChange={handleSearchChange} />
 
       <div className="main">
         <div
@@ -183,14 +186,16 @@ function DashboardWidget() {
             <div className="mb-22" key={cate.id}>
               <h4 className="mb-6">{cate.name}</h4>
               <div className="widget-align ">
-                {(filteredWidgets[cate.name] || []).map((widget, idx) => (
-                  <WidgetCard
-                    key={idx}
-                    widget={widget}
-                    category={cate}
-                    onDelete={handleDeleteWidget}
-                  />
-                ))}
+                {(filteredWidgets[cate.name] || cate.widgets).map(
+                  (widget, idx) => (
+                    <WidgetCard
+                      key={idx}
+                      widget={widget}
+                      category={cate}
+                      onDelete={handleDeleteWidget}
+                    />
+                  )
+                )}
                 <div
                   className="widget-card"
                   style={{

@@ -1,4 +1,4 @@
-// import { IoStatsChartOutline } from "react-icons/io5";
+import { IoStatsChartOutline } from "react-icons/io5";
 
 import React from "react";
 
@@ -8,13 +8,17 @@ function EmptyDataChart() {
       <div
         style={{
           display: "flex",
-          justifyContent: "center",
           alignItems: "center",
+          justifyContent: "center",
+          flexDirection: "column", // Aligns the icon and text vertically
+          height: "100%", // Ensure it takes up the full height of the container
         }}
       >
-        {/* <IoStatsChartOutline className="combochart-icon" /> */}
+        <IoStatsChartOutline className="combochart-icon" />
+        <p style={{ textAlign: "center", margin: "8px 0 0 0" }}>
+          No GraphData Available
+        </p>
       </div>
-      <p style={{ textAlign: "center" }}>No GraphData Available</p>
     </React.Fragment>
   );
 }

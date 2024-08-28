@@ -33,14 +33,14 @@ body {
   align-items: center;
 }
 
-/* input {
-    border: none;
-    background-color: transparent;
-    height: 100%;
-    font-size: 1.25rem;
-    width: 100%;
-    margin-left: 5px;
-  } */
+input {
+  border: none;
+  background-color: transparent;
+  height: 100%;
+  font-size: 12px;
+  width: 100%;
+  margin-left: 5px;
+}
 
 input:focus {
   outline: none;
