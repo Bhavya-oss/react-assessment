@@ -1,10 +1,10 @@
-import { configureStore } from "@reduxjs/toolkit";
-import DashboardSlice from "./components/DashboardSlice";
+// import { configureStore } from "@reduxjs/toolkit";
+// import DashboardSlice from "./components/DashboardSlice";
 
-const store = configureStore({
-  reducer: {
-    dashboard: DashboardSlice,
-  },
-});
+// const store = configureStore({
+//   reducer: {
+//     dashboard: DashboardSlice,
+//   },
+// });
 
-export default store;
+// export default store;
